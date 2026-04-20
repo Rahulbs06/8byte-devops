@@ -33,3 +33,26 @@ module "eks" {
   node_min_size      = var.node_min_size
   node_max_size      = var.node_max_size
 }
+
+module "rds" {
+  source = "./modules/rds"
+
+  project_name       = var.project_name
+  environment        = var.environment
+  vpc_id             = module.vpc.vpc_id
+  private_subnet_ids = module.vpc.private_subnet_ids
+  rds_sg_id          = module.security_groups.rds_sg_id
+  db_instance_class  = var.db_instance_class
+  db_name            = var.db_name
+  db_username        = var.db_username
+}
+
+module "alb" {
+  source = "./modules/alb"
+
+  project_name      = var.project_name
+  environment       = var.environment
+  vpc_id            = module.vpc.vpc_id
+  public_subnet_ids = module.vpc.public_subnet_ids
+  alb_sg_id         = module.security_groups.alb_sg_id
+}
