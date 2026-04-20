@@ -24,7 +24,7 @@ Never generate root access keys. On a fresh AWS account, the first action should
 
 ---
 
-## 2. Terraform remote state — chicken and egg problem
+## 2. Terraform remote state 
 
 **What happened**
 
