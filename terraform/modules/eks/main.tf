@@ -24,9 +24,11 @@ resource "aws_eks_cluster" "main" {
   version  = var.cluster_version
 
   vpc_config {
-    subnet_ids         = var.private_subnet_ids
-    security_group_ids = [var.eks_cluster_sg_id]
-  }
+  subnet_ids              = var.private_subnet_ids
+  security_group_ids      = [var.eks_cluster_sg_id]
+  endpoint_private_access = true
+  endpoint_public_access  = true
+}
 
   depends_on = [aws_iam_role_policy_attachment.eks_cluster_policy]
 }
