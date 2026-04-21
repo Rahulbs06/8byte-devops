@@ -22,3 +22,14 @@ output "rds_endpoint" {
   description = "RDS endpoint"
   value       = module.rds.db_endpoint
 }
+
+
+output "jenkins_public_ip" {
+  description = "Jenkins server public IP"
+  value       = module.jenkins_server.jenkins_public_ip
+}
+
+output "sonarqube_public_ip" {
+  description = "SonarQube server public IP"
+  value       = module.jenkins_server.sonarqube_public_ip
+}

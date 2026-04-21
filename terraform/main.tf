@@ -46,3 +46,17 @@ module "rds" {
   db_name            = var.db_name
   db_username        = var.db_username
 }
+
+module "jenkins_server" {
+  source = "./modules/jenkins-server"
+
+  project_name            = var.project_name
+  environment             = var.environment
+  vpc_id                  = module.vpc.vpc_id
+  public_subnet_id        = module.vpc.public_subnet_ids[0]
+  my_ip                   = var.my_ip
+  jenkins_instance_type   = var.jenkins_instance_type
+  sonarqube_instance_type = var.sonarqube_instance_type
+  key_name                = var.key_name
+  public_key_path         = var.public_key_path
+}
