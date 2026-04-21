@@ -16,6 +16,7 @@ module "security_groups" {
   environment  = var.environment
   vpc_id       = module.vpc.vpc_id
   vpc_cidr     = var.vpc_cidr
+  jenkins_sg_id  = module.jenkins_server.jenkins_sg_id
 }
 
 module "eks" {

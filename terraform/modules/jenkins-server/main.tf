@@ -24,6 +24,14 @@ resource "aws_security_group" "jenkins" {
     cidr_blocks = ["${var.my_ip}/32"]
   }
 
+  ingress {
+  description = "SonarQube webhook to Jenkins"
+  from_port   = 8080
+  to_port     = 8080
+  protocol    = "tcp"
+  cidr_blocks = ["10.0.1.0/24"]
+} 
+
   egress {
     from_port   = 0
     to_port     = 0

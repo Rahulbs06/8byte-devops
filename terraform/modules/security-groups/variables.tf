@@ -17,3 +17,8 @@ variable "vpc_cidr" {
   description = "VPC CIDR block"
   type        = string
 }
+
+variable "jenkins_sg_id" {
+  description = "Jenkins security group ID"
+  type        = string
+}
